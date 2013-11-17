@@ -1,4 +1,4 @@
 StudyIt
 =======
 
-Online learning system
+Система за онлайн обучение

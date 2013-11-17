@@ -1,0 +1,86 @@
+﻿@model StudyIt.Web.ViewModels.TrainerTestDetailsViewModel
+
+@{
+    ViewBag.Title = "Детайли";
+}
+
+<h2>Детайли</h2>
+
+<fieldset>
+    <legend>Тест</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SubcategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubcategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Author)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.QuestionNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionNumber)
+    </div>
+
+    <a href="/trainer/question/create/@Model.Id">Създай въпрос</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Въпрос</th>
+                <th>Отговор 1</th>
+                <th>Отговор 2</th>
+                <th>Отговор 3</th>
+                <th>Отговор 4</th>
+                <th>Верен отговор</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var question in Model.Questions){
+                <tr>
+                    <td>@question.Name</td>
+                    <td>@question.Answer1</td>
+                    <td>@question.Answer2</td>
+                    <td>@question.Answer3</td>
+                    <td>@question.Answer4</td>
+                    <td>@question.Answer</td>
+                    <td>
+                        <a href="/trainer/question/edit/@question.Id">Редактирай</a>
+                        <a href="/trainer/question/delete/@question.Id">Изтрий</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</fieldset>
+

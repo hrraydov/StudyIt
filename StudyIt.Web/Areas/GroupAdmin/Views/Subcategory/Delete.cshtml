@@ -1,0 +1,39 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminSubcategoryDeleteViewModel
+
+@{
+    ViewBag.Title = "Изтрий подкатегория";
+}
+
+<h2>Изтрий подкатегория</h2>
+
+<h3>Сигурни ли сте, че искате да изтриете това?</h3>
+<fieldset>
+    <legend>Подкатегория</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Изтрий" />
+    </p>
+}

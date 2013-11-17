@@ -1,0 +1,79 @@
+﻿<html>
+<head>
+    <title>Api
+    </title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+		
+    </script>
+    <script>
+        $(document).ready(
+
+            function () {
+                $("#groupSelect").on("change", function () {
+
+                    var selected = $("#groupSelect option:selected");
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/api/Categories/?groupId=" + selected.attr("data-id"),
+                        success: function (data) {
+
+                            var html = '<option data-id="none">Select Category</option>';
+
+                            for (var i = 0; i < data.length; i++) {
+                                html += '<option data-id="' + data[i].Id + '" value="' + data[i].Id + '">';
+                                html += data[i].Name;
+                                html += '</option>';
+                            }
+
+                            $('#categorySelect').html(html);
+
+                            $("[name=SubcategoryId]").html('<option data-id="none">Select Subcategory</option>');
+
+                        },
+                    });
+
+                });
+
+                $("#categorySelect").on("change", function () {
+
+                    var selected = $("#categorySelect option:selected");
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/api/Subcategories/?categoryId=" + selected.attr("data-id"),
+                        success: function (data) {
+
+                            var html = '<option data-id="none">Select Subcategory</option>';
+
+                            for (var i = 0; i < data.length; i++) {
+                                html += '<option data-id="' + data[i].Id + '" value="' + data[i].Id + '">';
+                                html += data[i].Name;
+                                html += '</option>';
+                            }
+
+                            $('[name=SubcategoryId]').html(html);
+
+                        },
+                    });
+
+                });
+
+            }
+        );
+    </script>
+</head>
+<body>
+    <select id="groupSelect">
+        <option data-id="none">Select Group</option>
+        <option data-id="1" value="1">1</option>
+        <option data-id="7" value="7">7</option>
+    </select>
+    <select id="categorySelect">
+        <option data-id="none">Select Category</option>
+    </select>
+    <select name="SubcategoryId">
+        <option data-id="none">Select Subcategory</option>
+    </select>
+</body>
+</html>

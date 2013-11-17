@@ -1,0 +1,44 @@
+﻿@model StudyIt.Web.ViewModels.LessonShowViewModel
+
+@{
+    ViewBag.Title = "Урок";
+}
+
+<article>
+    <header>
+        <h3>
+            @Model.Title
+        </h3>
+        @Model.CreationDate
+    </header>
+    <div class="lesson-content">
+        @Html.Raw(Model.Content)
+    </div>
+    <div>
+        Автор: @Model.AuthorName
+    </div>
+</article>
+@if (User.Identity.IsAuthenticated)
+{ 
+    <form action="/comment/create/" method="post">
+        <label>Напиши коментар:</label>
+        <textarea class="comment-textarea" name="Desc">
+        </textarea>
+        <input type="hidden" name="LessonId" value="@Model.Id"/><br />
+        <input type="submit" value="Send" />
+    </form>
+}
+<h4>Коментари:</h4>
+<ul class="lesson-comments ul-unstyled z-padding">
+    @foreach (var comment in Model.Comments)
+    {
+        <li>
+            <header>
+                @comment.Author.UserName @comment.CreationDate
+            </header>
+            <div class="comment-content">
+                @comment.Desc
+            </div>
+        </li>
+    }
+</ul>

@@ -1,0 +1,66 @@
+﻿@model StudyIt.Web.ViewModels.TrainerQuestionDeleteViewModel
+
+@{
+    ViewBag.Title = "Изтрий въпрос";
+}
+
+<h2>Изтрий</h2>
+
+<h3>Сигурни ли сте, че искате да изтриете това?</h3>
+<fieldset>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Answer1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Answer1)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Answer2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Answer2)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Answer3)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Answer3)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Answer4)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Answer4)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Value)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Value)
+        @Html.ValidationMessageFor(model => model.Value)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TrueAnswer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrueAnswer)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Изтрий" />
+    </p>
+}

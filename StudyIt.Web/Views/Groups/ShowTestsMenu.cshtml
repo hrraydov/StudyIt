@@ -1,0 +1,21 @@
+﻿@model StudyIt.Web.ViewModels.GroupsShowMenuViewModel
+
+
+<div class="secondaryMenu">
+    <ul class="ul-unstyled z-padding">
+        @foreach (var category in Model.Categories)
+        { 
+            <li>
+                <h3><a href="#" class="show-button" data-target-class="test-subcategory" data-target-id="@category.Id">@category.Name</a></h3>
+                <ul class="ul-unstyled to-show test-subcategory" data-id="@category.Id">
+                    @foreach (var subcategory in category.Subcategories)
+                    {
+                        <li>
+                            <a href="/test/list/@subcategory.Id">@subcategory.Name</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

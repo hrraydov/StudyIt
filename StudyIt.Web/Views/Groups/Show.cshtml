@@ -1,0 +1,23 @@
+﻿@model StudyIt.Web.ViewModels.GroupsShowViewModel
+
+@{
+    ViewBag.Title = "";
+}
+
+<h3>Група @Model.Name</h3>
+<div class="float-left">
+    <h4>Уроци</h4>
+    @{
+        Html.RenderAction("ShowLessonsMenu", "Groups", routeValues: new { id = Model.Id });
+    }
+</div>
+@if (User.Identity.IsAuthenticated)
+{ 
+    <div class="float-left">
+        <h4>Тестове</h4>
+        @{
+    Html.RenderAction("ShowTestsMenu", "Groups", routeValues: new { id = Model.Id });
+        }
+    </div>
+}
+

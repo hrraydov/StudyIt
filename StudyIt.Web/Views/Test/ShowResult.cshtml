@@ -1,0 +1,49 @@
+﻿@model StudyIt.Web.ViewModels.TestShowResultViewModel
+
+@{
+    ViewBag.Title = "Резултат";
+}
+
+<h3>@Model.Name</h3>
+
+<span>Резултат: @Model.Value / @Model.TotalScore точки</span>
+
+@if (Model.ShowTrueAnswers)
+{ 
+    foreach (var question in Model.WrongQuestions)
+    {
+        <div>
+            <h4>@question.Name</h4>
+        </div>
+        <div>
+            @question.Answer1
+            @if (Model.GivenAnswers[question.Id] == 1)
+            { <span class="glyphicon glyphicon-remove"></span> }
+            @if (question.Answer == 1)
+            { <span class="glyphicon glyphicon-ok"></span> }
+            <br />
+            @question.Answer2
+            @if (Model.GivenAnswers[question.Id] == 2)
+            { <span class="glyphicon glyphicon-remove"></span>}
+            @if (question.Answer == 2)
+            { <span class="glyphicon glyphicon-ok"></span> }
+            <br />
+            @question.Answer3
+            @if (Model.GivenAnswers[question.Id] == 3)
+            { <span class="glyphicon glyphicon-remove"></span>}
+            @if (question.Answer == 3)
+            { <span class="glyphicon glyphicon-ok"></span> }
+            <br />
+            @question.Answer4
+            @if (Model.GivenAnswers[question.Id] == 4)
+            { <span class="glyphicon glyphicon-remove"></span>}
+            @if (question.Answer == 4)
+            { <span class="glyphicon glyphicon-ok"></span> }
+            <br />
+        </div>
+    }
+
+    @section Styles{
+        <link  type="text/css" href="@Url.Content("~/Content/bootstrap/bootstrap.css")" rel="stylesheet"/>
+    }
+}

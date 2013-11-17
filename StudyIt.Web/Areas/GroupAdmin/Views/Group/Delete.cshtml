@@ -1,0 +1,33 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminGroupDeleteViewModel
+
+@{
+    ViewBag.Title = "Изтрий група";
+}
+
+<h2>Изтрий група</h2>
+
+<h3>Сигурни ли сте, че изкате да изтриете това?</h3>
+<fieldset>
+    <legend>Група</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Type)
+    </div>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Изтрий" />
+    </p>
+}

@@ -1,0 +1,47 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminSubcategoryCreateViewModel
+
+@{
+    ViewBag.Title = "Създай подкатегория";
+}
+
+<h2>Създай подкатегория</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Група</legend>
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.CategoryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.GroupName)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.GroupName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        @Html.HiddenFor(model => model.CategoryId)
+
+        <p>
+            <input type="submit" value="Създай" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

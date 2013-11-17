@@ -1,0 +1,30 @@
+﻿@model StudyIt.Web.ViewModels.TestDoViewModel
+
+@{
+    ViewBag.Title = "Направи тест";
+    int questionNumber = 0;
+}
+
+<h2>@Model.Name</h2>
+
+@using (Html.BeginForm())
+{
+    foreach (var question in Model.Questions)
+    {
+    <div>
+        <div>@question.Name</div>
+        <div>
+            <input type="hidden" name="QuestionIds[@questionNumber]" value="@question.Id" />
+            <input type="radio" checked="checked" id="Answer1" name="Answers[@questionNumber]" value="1" />@question.Answer1
+            <input type="radio" id="Answer2" name="Answers[@questionNumber]" value="2" />@question.Answer2
+            <input type="radio" id="Answer3" name="Answers[@questionNumber]" value="3" />@question.Answer3
+            <input type="radio" id="Answer4" name="Answers[@questionNumber]" value="4" />@question.Answer4
+        </div>
+    </div>
+    
+        questionNumber++;
+    }
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="QuestionCount" value="@Model.Questions.Count" />
+    <input type="submit" value="Направи" />
+}

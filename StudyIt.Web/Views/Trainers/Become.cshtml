@@ -1,0 +1,34 @@
+﻿@model StudyIt.Web.ViewModels.TrainersBecomeViewModel
+
+@{
+    ViewBag.Title = "Заявка за обучаващ";
+}
+
+<h2>Заявка за обучаващ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Заявка за обучаващ</legend>
+
+        <input type="hidden" name="GroupId" value="@Model.GroupId" />
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Message)
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <p>
+            <input type="submit" value="Подай заявка за обучаващ" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

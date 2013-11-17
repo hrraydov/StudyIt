@@ -1,0 +1,11 @@
+﻿@model List<StudyIt.Web.ViewModels.GroupAdminMembersShowViewModel>
+
+@{
+    ViewBag.Title = "Покажи членовете";
+}
+<ul class="ul-unstyled z-padding">
+    @foreach (var member in Model)
+    { 
+        <li>@member.Name - <a href="/GroupAdmin/Members/Delete/@member.GroupId/@member.Id">Изтрий</a></li>
+    }
+</ul>

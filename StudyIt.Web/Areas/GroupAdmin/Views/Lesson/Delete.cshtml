@@ -1,0 +1,60 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminLessonDeleteViewModel
+
+@{
+    ViewBag.Title = "Изтрий урок";
+}
+
+<h2>Изтрий урок</h2>
+
+<h3>Сигурни ли сте, че искате да изтриете това?</h3>
+<fieldset>
+    <legend>Група</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SubcategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubcategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Author)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CreationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreationDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Изтрий" />
+    </p>
+}

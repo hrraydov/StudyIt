@@ -1,0 +1,14 @@
+﻿@model List<StudyIt.Web.ViewModels.GroupAdminMembersQueriesViewModel>
+
+@{
+    ViewBag.Title = "Заявки за членство";
+}
+
+<ul>
+    @foreach (var query in Model)
+    { 
+        <li>
+            @query.UserName "@Model.Message" - <a href="/GroupAdmin/Members/Create/@query.Id">Направи член</a>
+        </li>
+    }
+</ul>

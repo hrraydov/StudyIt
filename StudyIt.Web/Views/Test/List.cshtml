@@ -1,0 +1,19 @@
+﻿@model List<StudyIt.Web.ViewModels.TestListViewModel>
+
+@{
+    ViewBag.Title = "Тестове";
+}
+
+@{
+    Html.RenderAction("ShowTestsMenu", "Groups", routeValues: new { id = (int)ViewData["GroupId"] });
+}
+<ul class="ul-unstyled z-padding">
+    @foreach (var test in Model)
+    { 
+        <li>
+            <h4><a href="/test/do/@test.Id">@test.Name</a></h4>
+        </li>
+    }
+</ul>
+
+

@@ -1,0 +1,54 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminTestDeleteViewModel
+
+@{
+    ViewBag.Title = "Изтрий";
+}
+
+<h2>Изтрий</h2>
+
+<h3>Сигурни ли сте, че искате да истриете това</h3>
+<fieldset>
+    <legend>Тест</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SubcategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SubcategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Author)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Изтрий" />
+    </p>
+}

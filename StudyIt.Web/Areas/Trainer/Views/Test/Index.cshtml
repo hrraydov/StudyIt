@@ -1,0 +1,48 @@
+﻿@model List<StudyIt.Web.ViewModels.TrainerTestIndexViewModel>
+
+@{
+    ViewBag.Title = "Тестове";
+}
+<a href="/trainer/test/create">Създай нов тест</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Брой въпроси</th>
+            <th>Подкатегория</th>
+            <th>Категория</th>
+            <th>Група</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var test in Model)
+        { 
+            <tr>
+                <td>
+                    @test.Name
+                </td>
+                <td>
+                    @test.QuestionNumber
+                </td>
+                <td>
+                    @test.Subcategory
+                </td>
+                <td>
+                    @test.Category
+                </td>
+                <td>
+                    @test.Group
+                </td>
+                <td>
+                    <a href="/trainer/test/details/@test.Id">Детайли</a>
+                    |
+                    <a href="/trainer/test/edit/@test.Id">Редактирай</a>
+                    |
+                    <a href="/trainer/test/delete/@test.Id">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

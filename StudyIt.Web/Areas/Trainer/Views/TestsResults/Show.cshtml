@@ -1,0 +1,32 @@
+﻿@model List<StudyIt.Web.ViewModels.TrainerTestResultsShowViewModel>
+
+@{
+    ViewBag.Title = "Резултати";
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>Тест</td>
+            <td>Потребител</td>
+            <td>Резултат</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var result in Model)
+        {
+            <tr>
+                <td>
+                    @result.Name
+                </td>
+                <td>
+                    @result.Username
+                </td>
+                <td>
+                    @result.Score / @result.TotalScore
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

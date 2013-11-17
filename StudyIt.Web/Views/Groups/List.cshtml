@@ -1,0 +1,40 @@
+﻿@model List<StudyIt.Web.ViewModels.GroupsListViewModel>
+
+@{
+    ViewBag.Title = "Групи";
+}
+
+<div class="secondaryMenu">
+    <ul class="ul-unstyled z-padding">
+        @foreach (var group in Model)
+        { 
+            <li>
+                <h3><a href="#" class="show-button" data-target-id="@group.Id" data-target-class="groups-lt">@group.Name</a></h3>
+
+                @if (ViewContext.RouteData.Values["action"].ToString() == "not-member-of")
+                {
+                    <a href="/members/become/@group.Id">Стани член</a>
+                }
+                @if (ViewContext.RouteData.Values["action"].ToString() == "member-of" && !group.IsTrainer)
+                {
+                    <a href="/trainers/become/@group.Id">Стани трейнър</a>
+                }
+                @if (ViewContext.RouteData.Values["action"].ToString() == "public" && User.Identity.IsAuthenticated && !group.IsTrainer)
+                {
+                    <a href="/trainers/become/@group.Id">Стани трейнър</a>
+                }
+                <ul class="ul-unstyled to-show groups-lt" data-id="@group.Id">
+                    <li>
+                        <a href="/group/@group.Id/lessons">Уроци</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    { 
+                        <li>
+                            <a href="/group/@group.Id/tests">Тестове</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>

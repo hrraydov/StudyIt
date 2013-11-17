@@ -1,0 +1,40 @@
+﻿@model StudyIt.Web.ViewModels.GroupAdminGroupIndexViewModel
+
+@{
+    ViewBag.Title = "Създай група";
+}
+
+<h2>Създай група</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            <input type="radio" name="Type" value="1" />Публична
+            <input type="radio" checked name="Type" value="2" />Частна
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+
+        <p>
+            <input type="submit" value="Създай" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

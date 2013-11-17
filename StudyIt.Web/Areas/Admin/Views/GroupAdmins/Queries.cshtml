@@ -1,0 +1,12 @@
+﻿@model List<StudyIt.Web.ViewModels.AdminGroupAdminsQueriesViewModel>
+
+@{
+    ViewBag.Title = "Заявки за групов админ";
+}
+
+<ul class="ul-unstyled z-padding">
+    @foreach (var query in Model)
+    {
+        <li>@query.Name "@query.Message" - <a href="/admin/groupadmin/create/@query.Id">Направи групов админ</a></li>
+    }
+</ul>

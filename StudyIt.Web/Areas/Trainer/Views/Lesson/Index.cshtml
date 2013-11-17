@@ -1,0 +1,44 @@
+﻿@model List<StudyIt.Web.ViewModels.TrainerLessonIndexViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<a href="/trainer/lesson/create">Създай нов урок</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Име</th>
+            <th>Подкатегория</th>
+            <th>Категория</th>
+            <th>Група</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in Model)
+        { 
+            <tr>
+                <td>
+                    @lesson.Title
+                </td>
+                <td>
+                    @lesson.Subcategory
+                </td>
+                <td>
+                    @lesson.Category
+                </td>
+                <td>
+                    @lesson.Group
+                </td>
+                <td>
+                    <a href="/trainer/lesson/details/@lesson.Id">Детайли</a>
+                    |
+                    <a href="/trainer/lesson/edit/@lesson.Id">Редактирай</a>
+                    |
+                    <a href="/trainer/lesson/delete/@lesson.Id">Изтрий</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

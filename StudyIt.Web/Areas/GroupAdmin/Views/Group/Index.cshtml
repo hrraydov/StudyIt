@@ -1,0 +1,71 @@
+﻿@model List<StudyIt.Web.ViewModels.GroupAdminGroupIndexViewModel>
+
+@{
+    ViewBag.Title = "Групов админ";
+}
+<a href="/GroupAdmin/Group/Create">Създай нова група</a>
+<ul class="ul-unstyled z-padding">
+    @foreach (var group in Model)
+    { 
+        <li class="m-top-bot">
+            <a href="#show" class="show-button" data-target-class="category-container" data-target-id="@group.Id">@group.Name (@group.Type)</a> - <a href="/GroupAdmin/Group/Delete/@group.Id">Изтрий</a>
+            <br />
+            @if (group.Type == "Частна")
+            {
+                <a href="/GroupAdmin/Members/Show/@group.Id">Членове</a><br />
+                <a href="/GroupAdmin/Members/Queries/@group.Id">Заявки за членове</a><br />
+            }
+            <a href="/GroupAdmin/Trainers/Show/@group.Id">Обучаващи</a><br />
+            <a href="/GroupAdmin/Trainers/Queries/@group.Id">Заявки за обучаващи</a><br />
+            <a href="/GroupAdmin/Category/Create/@group.Id">Създай нова категория</a><br />
+            <div class="">
+                <ul class="to-show category-container bordered ul-unstyled" data-id="@group.Id">
+                    @foreach (var category in group.Categories)
+                    {
+                        <li class="m-top-bot">
+                            <a href="#show" class="show-button" data-target-class="subcategory-container" data-target-id="@category.Id">Категория: @category.Name</a> - <a href="/GroupAdmin/Category/Delete/@category.Id">Изтрий</a><br />
+                            <a href="/GroupAdmin/Subcategory/Create/@category.Id">Създай нова подкатегория</a>
+                            <ul class="to-show subcategory-container ul-unstyled" data-id="@category.Id">
+                                @foreach (var subcategory in category.Subcategories)
+                                {
+                                    <li class="m-top-bot">
+                                        <a href="#show" class="show-button" data-target-class="lesson-test-container" data-target-id="@subcategory.Id">Подкатегория: @subcategory.Name</a> - <a href="/GroupAdmin/Subcategory/Delete/@subcategory.Id">Изтрий</a>
+                                        <div class="to-show lesson-test-container " data-id="@subcategory.Id">
+                                            Уроци:
+                                            <ul class="ul-unstyled">
+                                                @foreach (var lesson in subcategory.Lessons)
+                                                {
+                                                    <li>Урок: @lesson.Title - <a href="/GroupAdmin/Lesson/Details/@lesson.Id">Детайли</a>
+                                                        | 
+                                                    <a href="/GroupAdmin/Lesson/Delete/@lesson.Id">Изтрий</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                            Тестове:
+                                            <ul class="ul-unstyled">
+                                                @foreach (var test in subcategory.Tests)
+                                                { 
+                                                    <li>Тест: @test.Name - <a href="/GroupAdmin/Test/Details/@test.Id">Детайли</a>
+                                                        |
+                                                        <a href="/GroupAdmin/Test/Delete/@test.Id">Изтрий</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </li>
+    }
+</ul>
+
+
+
+
+@section scripts{
+    @Scripts.Render("~/Scripts/GroupAdmin.js")
+}

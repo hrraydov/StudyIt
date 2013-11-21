@@ -20,12 +20,6 @@ else
     @Html.Partial("_SetPasswordPartial")
 }
 
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Добави външен акаунт</h3>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

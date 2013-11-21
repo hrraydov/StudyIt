@@ -44,11 +44,16 @@ namespace StudyIt.Web.Controllers
             var groups = groupService.GetPublicGroups();
             var viewModel = new List<GroupsListViewModel>();
             bool isTrainer = false;
+            UserProfile user = null;
+            if (User.Identity.IsAuthenticated)
+            {
+                user = this.userService.GetUser((int)Membership.GetUser().ProviderUserKey);
+            }
             foreach (var group in groups)
             {
                 if (User.Identity.IsAuthenticated && (
-                    group.Trainers.Contains(new UserProfile { UserId = (int)Membership.GetUser().ProviderUserKey }) ||
-                    group.TrainerQueries.Contains(new TrainerQuery { UserId = (int)Membership.GetUser().ProviderUserKey, GroupId = group.Id }) ||
+                    group.Trainers.Where(x => x.UserId == user.UserId).Count() > 0 ||
+                    group.TrainerQueries.Where(x => x.UserId == (int)Membership.GetUser().ProviderUserKey && x.GroupId == group.Id).Count() > 0 ||
                     group.Owner.UserId == (int)Membership.GetUser().ProviderUserKey
                 ))
                 {
@@ -79,8 +84,8 @@ namespace StudyIt.Web.Controllers
             foreach (var group in groups)
             {
                 if (User.Identity.IsAuthenticated && (
-                   group.Trainers.Contains(new UserProfile { UserId = (int)Membership.GetUser().ProviderUserKey }) ||
-                   group.TrainerQueries.Contains(new TrainerQuery { UserId = (int)Membership.GetUser().ProviderUserKey, GroupId = group.Id }) ||
+                   group.Trainers.Where(x => x.UserId == (int)Membership.GetUser().ProviderUserKey).Count() > 0 ||
+                   group.TrainerQueries.Where(x => x.UserId == (int)Membership.GetUser().ProviderUserKey && x.GroupId == group.Id).Count() > 0 ||
                    group.Owner.UserId == (int)Membership.GetUser().ProviderUserKey
                ))
                 {

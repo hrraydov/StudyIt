@@ -2,6 +2,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <li><a href="/groups/choose/">Групи</a></li>
+        <li><a href="/testresult/show/">Резултати/a></li>
         <li><a href="/trainer/">Обучаващ</a></li>
         if (User.IsInRole("GroupAdmin"))
         {
@@ -9,7 +10,7 @@
         }
         else if (!User.IsInRole("Admin"))
         { 
-        <li><a href="/groupadmin/become">Заявка за групов админ</a></li>
+        <li><a href="/group-admin/become">Заявка за групов админ</a></li>
         }
         if (User.IsInRole("Admin"))
         {

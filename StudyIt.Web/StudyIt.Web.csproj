@@ -213,6 +213,7 @@
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\SubcategoriesApiController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TestResultController.cs" />
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -352,9 +353,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\GroupAdmin.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js.map" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -435,6 +433,8 @@
     <Content Include="Views\Test\ShowResult.cshtml" />
     <Content Include="Views\Trainers\Become.cshtml" />
     <Content Include="Views\Groups\Choose.cshtml" />
+    <Content Include="Views\TestResult\Showa.cshtml" />
+    <Content Include="Views\Test\Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />

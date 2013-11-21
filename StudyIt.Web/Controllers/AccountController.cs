@@ -266,7 +266,7 @@ namespace StudyIt.Web.Controllers
                 // Insert a new user into the database
                 using (UsersContext db = new UsersContext())
                 {
-                    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
+                    UserProfile user = db.UserProfiles.Where(u => u.UserName.ToLower() == model.UserName.ToLower()).FirstOrDefault();
                     // Check if user already exists
                     if (user == null)
                     {

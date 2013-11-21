@@ -1,0 +1,31 @@
+﻿@model List<StudyIt.Web.ViewModels.TestResultsShowViewModel>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<table>
+    <thead>
+        <tr>
+            <td>Тест</td>
+            <td>Резултат</td>
+        </tr>
+    </thead>
+    <tfoot>
+        <td></td>
+        <td>
+            @ViewData["score"] / @ViewData["totalScore"]
+        </td>
+    </tfoot>
+    <tbody>
+        @foreach (var result in Model)
+        { 
+            <tr>
+                <td>@result.Name</td>
+                <td>
+                    @result.Score / @result.TotalScore
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

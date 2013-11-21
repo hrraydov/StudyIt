@@ -73,7 +73,7 @@ namespace StudyIt.Web.Areas.Admin.Controllers
             var query = queryService.GetQuery(id);
             Roles.AddUserToRole(query.User.UserName, "GroupAdmin");
             this.queryService.DeleteQuery(id);
-            return Redirect("/admin/groupadmin/queries");
+            return Redirect("/admin/groupadmins/queries");
         }
 
     }

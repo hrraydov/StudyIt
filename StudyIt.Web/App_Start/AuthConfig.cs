@@ -23,8 +23,8 @@ namespace StudyIt.Web
             //    consumerSecret: "");
 
             //OAuthWebSecurity.RegisterFacebookClient(
-                appId: "633111173417123",
-                appSecret: "4438d5760c31eda773a80116f0d5ffff");
+                //appId: "633111173417123",
+                //appSecret: "4438d5760c31eda773a80116f0d5ffff");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }

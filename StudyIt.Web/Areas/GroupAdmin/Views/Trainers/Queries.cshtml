@@ -8,7 +8,7 @@
     @foreach (var query in Model)
     { 
         <li>
-            @query.UserName "@query.Message" - <a href="/GroupAdmin/Trainers/Create/@query.Id">Направи обучаващ</a>
+            @query.UserName "@query.Message" - <a href="/GroupAdmin/Trainers/Create/@query.Id">Направи обучаващ</a>, <a href="/GroupAdmin/trainers/deletequery/@query.Id">Откажи</a>
         </li>
     }
 </ul>

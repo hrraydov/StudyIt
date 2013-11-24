@@ -25,7 +25,7 @@ namespace StudyIt.Web.Areas.GroupAdmin.Controllers
             this.groupService = groupService;
             this.queryService = queryService;
         }
-        
+
         [HttpGet]
         public ActionResult Show(int id)
         {
@@ -73,6 +73,13 @@ namespace StudyIt.Web.Areas.GroupAdmin.Controllers
             groupService.AddTrainer(query.Group.Id, query.User.UserId);
             queryService.DeleteQuery(id);
             return Redirect("/GroupAdmin/");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteQuery(int id)
+        {
+            this.queryService.DeleteQuery(id);
+            return Redirect("/groupadmin/");
         }
 
 

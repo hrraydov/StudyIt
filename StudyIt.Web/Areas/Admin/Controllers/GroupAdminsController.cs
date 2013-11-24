@@ -1,4 +1,7 @@
-﻿using StudyIt.Service;
+﻿using StudyIt.Data;
+using StudyIt.Service;
+using StudyIt.Web.Filters;
+using StudyIt.Web.Models;
 using StudyIt.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,7 +12,7 @@ using System.Web.Security;
 
 namespace StudyIt.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class GroupAdminsController : Controller
     {
         private IGroupAdminQueryService queryService;
@@ -46,7 +49,12 @@ namespace StudyIt.Web.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            Roles.RemoveUserFromRole((string)Membership.GetUser(id).ProviderName, "GroupAdmin");
+            StudyIt.Models.UserProfile user;
+            using (var db = new StudyItContext())
+            {
+                user = db.UserProfiles.First(x => x.UserId == id);
+            }
+            Roles.RemoveUserFromRole(user.UserName, "GroupAdmin");
             return Redirect("/admin/groupadmins/show");
         }
 
@@ -72,6 +80,13 @@ namespace StudyIt.Web.Areas.Admin.Controllers
         {
             var query = queryService.GetQuery(id);
             Roles.AddUserToRole(query.User.UserName, "GroupAdmin");
+            this.queryService.DeleteQuery(id);
+            return Redirect("/admin/groupadmins/queries");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteQuery(int id)
+        {
             this.queryService.DeleteQuery(id);
             return Redirect("/admin/groupadmins/queries");
         }

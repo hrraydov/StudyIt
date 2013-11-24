@@ -75,5 +75,11 @@ namespace StudyIt.Web.Areas.GroupAdmin.Controllers
             return Redirect("/GroupAdmin/");
         }
 
+        [HttpGet]
+        public ActionResult DeleteQuery(int id)
+        {
+            this.queryService.DeleteQuery(id);
+            return Redirect("/groupadmin/");
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace StudyIt.Web.Areas.GroupAdmin.Controllers
 {
-    [Authorize(Roles = "GroupAdmin")]
+    [Authorize(Roles = "GroupAdmin,Admin")]
     public class TestController : Controller
     {
         private ITestService testService;

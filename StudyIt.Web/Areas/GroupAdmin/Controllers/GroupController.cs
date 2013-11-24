@@ -12,7 +12,7 @@ using StudyIt.Web.Helpers;
 
 namespace StudyIt.Web.Areas.GroupAdmin.Controllers
 {
-    [Authorize(Roles = "GroupAdmin")]
+    [Authorize(Roles = "GroupAdmin,Admin")]
     public class GroupController : Controller
     {
         private IGroupService groupService;
@@ -37,9 +37,18 @@ namespace StudyIt.Web.Areas.GroupAdmin.Controllers
         [InitializeSimpleMembership]
         public ActionResult Index()
         {
-            var groups = groupService.GetGroupsByOwnerId(
-                WebSecurity.GetUserId(User.Identity.Name)
-                );
+            List<Group> groups;
+            if (User.IsInRole("GroupAdmin"))
+            {
+                groups = groupService.GetGroupsByOwnerId(
+                    WebSecurity.GetUserId(User.Identity.Name)
+                    );
+            }
+            else
+            {
+                groups = groupService.GetAllGroups();
+
+            }
             var viewModel = new List<GroupAdminGroupIndexViewModel>();
             foreach (var group in groups)
             {

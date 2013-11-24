@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace StudyIt.Web.Areas.GroupAdmin.Controllers
 {
-    [Authorize(Roles = "GroupAdmin")]
+    [Authorize(Roles = "GroupAdmin,Admin")]
     public class MembersController : Controller
     {
         private IGroupService groupService;

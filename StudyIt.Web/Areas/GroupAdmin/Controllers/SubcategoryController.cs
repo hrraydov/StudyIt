@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace StudyIt.Web.Areas.GroupAdmin.Controllers
 {
-    [Authorize(Roles = "GroupAdmin")]
+    [Authorize(Roles = "GroupAdmin,Admin")]
     public class SubcategoryController : Controller
     {
         private ICategoryService categoryService;

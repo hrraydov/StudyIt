@@ -29,7 +29,7 @@ namespace StudyIt.Web.Areas.Trainer.Controllers
         //
         // GET: /Trainer/TestsResults/
 
-        public ActionResult Show(int id)
+        public ActionResult Show()
         {
             var results = this.testResultService.GetResultsByTrainerId((int)Membership.GetUser().ProviderUserKey);
             var viewModel = new List<TrainerTestResultsShowViewModel>();
